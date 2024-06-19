@@ -45,7 +45,7 @@ const App = () => {
                 {/* Protected routes */}
                 {isLoggedIn && (
                     <Route element={<Layout handleLogout={handleLogout} />}>
-                        <Route index element={<Index />} />
+                        <Route path="/" element={<Index />} />
                         <Route path="/nestedAxios" element={<NestedAxios />} />
                         <Route path="/classDemo" element={<ClassDemo />} />
                         <Route path="/conditionalDemo" element={<ConditionalDemo />} />
@@ -57,7 +57,7 @@ const App = () => {
                         <Route path="/functionDemo" element={<FunctionDemo />} />
                         <Route path="/curd" element={<Curd />} />
                         <Route path="/counter" element={<Counter />} />
-                        <Route path="/logout" element={<Navigate to="/login"/>} />
+                        <Route path="/logout" element={<Navigate to="/login" />} />
                         <Route path="*" element={<Navigate to="/" replace />} />
                     </Route>
                 )}
