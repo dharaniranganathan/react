@@ -86,7 +86,7 @@ const NavBar = () => {
                     <Link to="/curd" style={styles.navLink}>Crud Operation</Link>
                 </li>
                 <li style={styles.navItem}>
-                    <Link to="/login" style={styles.navLink}>logout</Link>
+                    <Link to="/login" style={styles.navLink} >logout</Link>
                 </li>
             </ul>
         </nav>
