@@ -14,6 +14,7 @@ import UseEffectDemo from './components/useEffectDemo';
 import UseMemoDemo from './components/useMemoDemo';
 import UseCallback from './components/useCallback';
 import Counter from './components/counterDemo';
+import ProductList from './components/product/ProductList';
 import Curd from './routing/crud.js';
 // import './App.css';
 
@@ -58,6 +59,7 @@ const App = () => {
                         <Route path="/useCallback" element={<UseCallback />} />
                         <Route path="/functionDemo" element={<FunctionDemo />} />
                         <Route path="/curd" element={<Curd />} />
+                        <Route path="/productList" element={<ProductList />} />
                         <Route path="/counter" element={<Counter />} />
                         <Route path="/" element={<Navigate to="/" />} />
                         <Route path="*" element={<Navigate to="/login" replace />} />

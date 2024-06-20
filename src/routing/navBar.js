@@ -89,6 +89,12 @@ const NavBar = () => {
                     <Link to="/curd" style={styles.navLink}>Crud Operation</Link>
                 </li>
                 <li style={styles.navItem}>
+                    <Link to="/counter" style={styles.navLink}>Counter</Link>
+                </li>
+                <li style={styles.navItem}>
+                    <Link to="/productList" style={styles.navLink}>Flip Card</Link>
+                </li>
+                <li style={styles.navItem}>
                     <Link to="/login" style={styles.navLink} >logout</Link>
                 </li>
             </ul>

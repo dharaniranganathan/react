@@ -17,8 +17,8 @@ const Layout = () => {
 const styles = {
     container: {
         fontFamily: 'Arial, sans-serif',
-        margin: '0 auto',
-        maxWidth: '800px',
+        margin: '0',
+        minWidth: '1200px',
         padding: '20px',
     },
     content: {
