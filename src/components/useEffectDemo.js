@@ -4,13 +4,13 @@ export default function UseEffectDemo(){
     const [val, setValue] = useState('');
     //const [val, setData] = useState('');
     useEffect(()=>{
-        alert('Component Mounted');
+        console.log('Component Mounted');
     },[])
     useEffect(()=>{
-        alert('val  Mounted/updated');
+        console.log('val  Mounted/updated');
     },[val])
     useEffect(()=>{
-        alert('Component is unmounted');
+        console.log('Component is unmounted');
     },)
 
     return(

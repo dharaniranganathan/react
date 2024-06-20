@@ -37,16 +37,16 @@ const App = () => {
         <Router>
             <Routes>
                 {/* Public routes */}
-                {!isLoggedIn && (
+                {/*{!isLoggedIn && (*/}
                     <Route element={<PublicLayout />}>
                         <Route path="/login" element={<Login onLogin={handleLogin} />} />
                         <Route path="*" element={<Navigate to="/login" replace />} />
                     </Route>
-                )}
+                {/*)}*/}
 
                 {/* Protected routes */}
-                {isLoggedIn && (
-                    <Route element={<Layout handleLogout={handleLogout} />}>
+                {/*{isLoggedIn && (*/}
+                    <Route element={ <Layout handleLogout={handleLogout} />}>
                         <Route path="/home" element={<Index />} />
                         <Route path="/nestedAxios" element={<NestedAxios />} />
                         <Route path="/classDemo" element={<ClassDemo />} />
@@ -59,10 +59,10 @@ const App = () => {
                         <Route path="/functionDemo" element={<FunctionDemo />} />
                         <Route path="/curd" element={<Curd />} />
                         <Route path="/counter" element={<Counter />} />
-                        <Route path="/logout" element={<Navigate to="/login" />} />
+                        <Route path="/" element={<Navigate to="/" />} />
                         <Route path="*" element={<Navigate to="/login" replace />} />
                     </Route>
-                )}
+                {/*)}*/}
 
                 {/* Fallback for any unmatched routes */}
                 <Route path="*" element={<Navigate to={isLoggedIn ? "/home" : "/login"} replace />} />

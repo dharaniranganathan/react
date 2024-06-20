@@ -83,6 +83,9 @@ const NavBar = () => {
                     <Link to="/conditionalDemo" style={styles.navLink}>Conditional</Link>
                 </li>
                 <li style={styles.navItem}>
+                    <Link to="/lifeCycleDemo" style={styles.navLink}>Lifecycle</Link>
+                </li>
+                <li style={styles.navItem}>
                     <Link to="/curd" style={styles.navLink}>Crud Operation</Link>
                 </li>
                 <li style={styles.navItem}>
