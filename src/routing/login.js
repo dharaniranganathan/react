@@ -12,7 +12,7 @@ const Login = ({ onLogin }) => {
         // Add your login logic here, e.g., API call to authenticate the user
         if (username === 'admin' && password === 'password') {
             onLogin(username, password);
-            navigate('/');
+            navigate('/home');
         } else {
             alert('Invalid username or password');
         }

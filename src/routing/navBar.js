@@ -28,7 +28,7 @@ const NavBar = () => {
         <nav style={styles.navbar}>
             <ul style={styles.navList}>
                 <li style={styles.navItem}>
-                    <Link index path="/" style={styles.navLink}>Home</Link>
+                    <Link to="/home" style={styles.navLink}>Home</Link>
                 </li>
                 <li style={styles.navItem}>
                     <Link to="/nestedAxios" style={styles.navLink}>Nested Axios</Link>

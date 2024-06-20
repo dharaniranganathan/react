@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate,useNavigate } from 'react-router-dom';
 import Layout from './routing/layout';
 import PublicLayout from './routing/publicLayout';
 import Login from './routing/login';
@@ -19,6 +19,7 @@ import Curd from './routing/crud.js';
 
 const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    //const navigate = useNavigate();
 
     const handleLogin = (username, password) => {
         console.log('Logging in with', username, password);
@@ -29,6 +30,7 @@ const App = () => {
     const handleLogout = () => {
         // Perform logout logic here
         setIsLoggedIn(false);
+        //navigate('/login');
     };
 
     return (
@@ -45,7 +47,7 @@ const App = () => {
                 {/* Protected routes */}
                 {isLoggedIn && (
                     <Route element={<Layout handleLogout={handleLogout} />}>
-                        <Route path="/" element={<Index />} />
+                        <Route path="/home" element={<Index />} />
                         <Route path="/nestedAxios" element={<NestedAxios />} />
                         <Route path="/classDemo" element={<ClassDemo />} />
                         <Route path="/conditionalDemo" element={<ConditionalDemo />} />
@@ -58,12 +60,12 @@ const App = () => {
                         <Route path="/curd" element={<Curd />} />
                         <Route path="/counter" element={<Counter />} />
                         <Route path="/logout" element={<Navigate to="/login" />} />
-                        <Route path="*" element={<Navigate to="/" replace />} />
+                        <Route path="*" element={<Navigate to="/login" replace />} />
                     </Route>
                 )}
 
                 {/* Fallback for any unmatched routes */}
-                <Route path="*" element={<Navigate to={isLoggedIn ? "/" : "/login"} replace />} />
+                <Route path="*" element={<Navigate to={isLoggedIn ? "/home" : "/login"} replace />} />
             </Routes>
         </Router>
     );
