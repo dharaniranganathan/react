@@ -1,5 +1,5 @@
 // Home.js
-import React,{ useRef } from 'react';
+import React,{ useState } from 'react';
 import Home from '../components/Home';
 import About from '../components/About';
 import Contact from '../components/Contact';
@@ -7,27 +7,28 @@ import Contact from '../components/Contact';
 import './styles.css';
 
 const Index = () => {
-    const homeRef = useRef(null);
-    const aboutRef = useRef(null);
-    const contactRef = useRef(null);
+    const [currentTab, setCurrentTab] = useState('1');
 
-    const handleScroll = (ref) => {
-        ref.current.scrollIntoView({ behavior: 'smooth' });
-    };
+    let Component;
+    if (currentTab === '1') {
+        Component = Home;
+    } else if (currentTab === '2') {
+        Component = About;
+    } else if (currentTab === '3') {
+        Component = Contact;
+    }
+
     return (
-        <div className="container">
+        <div>
             <nav className="scrollable-tabs">
                 <ul>
-                    <li><button onClick={() => handleScroll(homeRef)}>Section  1</button></li>
-                    <li><button onClick={() => handleScroll(aboutRef)}>Section 2 </button></li>
-                    <li><button onClick={() => handleScroll(contactRef)}>Section 3</button></li>
+                    <li className={currentTab === '1' ? 'active' : ''} ><button onClick={() => setCurrentTab('1')}>Section  1</button></li>
+                    <li className={currentTab === '2' ? 'active' : ''} ><button onClick={() => setCurrentTab('2')}>Section 2 </button></li>
+                    <li className={currentTab === '3' ? 'active' : ''}><button onClick={() => setCurrentTab('3')}>Section 3</button></li>
                 </ul>
             </nav>
-
             <div className="content">
-                <Home ref={homeRef} />
-                <About ref={aboutRef} />
-                <Contact ref={contactRef} />
+                <Component />
             </div>
         </div>
     );
