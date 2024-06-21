@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {  Button, Table, Modal, Form } from 'react-bootstrap';
+import { Button, Table, Modal, Form } from 'react-bootstrap';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,7 +9,7 @@ const App = () => {
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true);
     const [show, setShow] = useState(false);
-    const [currentItem, setCurrentItem] = useState({ id: null, name: '', description: '' });
+    const [currentItem, setCurrentItem] = useState({ id: null, title: '', body: '' });
     const [isEditing, setIsEditing] = useState(false);
 
     const apiEndpoint = 'http://localhost:5000/items';
@@ -20,31 +20,38 @@ const App = () => {
 
     const fetchItems = async () => {
         try {
-            const { data } = await axios.get(apiEndpoint);
-            setItems(data);
+            const response = await axios.get(apiEndpoint);
+            setItems(response.data);
+            setLoading(false);
         } catch (error) {
             console.error('Error fetching items:', error);
-        } finally {
-            setLoading(false);
         }
     };
 
-    const handleShow = (item = { id: null, name: '', description: '' }) => {
+    const handleShow = (item = { id: null, title: '', body: '' }) => {
         setIsEditing(!!item.id);
         setCurrentItem(item);
         setShow(true);
     };
 
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        setShow(false);
+        setCurrentItem({ id: null, title: '', body: '' });
+        setIsEditing(false);
+    };
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setCurrentItem({ ...currentItem, [name]: value });
     };
     const generateId = () => {
-
+        // Parse string IDs to numbers and filter out non-numeric IDs
         const numericIds = items.map(item => parseInt(item.id)).filter(id => !isNaN(id));
+
+        // Find the maximum numeric ID
         const maxId = numericIds.length ? Math.max(...numericIds) : 0;
+
+        // Increment the maximum ID and return it as a string
         return (maxId + 1).toString();
     };
     const handleSubmit = async (e) => {
@@ -66,7 +73,6 @@ const App = () => {
 
     const handleDelete = async (id) => {
         try {
-            console.log(`Deleting item with ID: ${id}`);
             await axios.delete(`${apiEndpoint}/${id}`);
             fetchItems();
         } catch (error) {
@@ -106,8 +112,8 @@ const App = () => {
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
-                        <th>Description</th>
+                        <th>Title</th>
+                        <th>Body</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
@@ -115,8 +121,8 @@ const App = () => {
                     {items.map(item => (
                         <tr key={item.id}>
                             <td>{item.id}</td>
-                            <td>{item.name}</td>
-                            <td>{item.description}</td>
+                            <td>{item.title}</td>
+                            <td>{item.body}</td>
                             <td>
                                 <Button variant="warning" onClick={() => handleShow(item)} className="me-2">Edit</Button>
                                 <Button variant="danger" onClick={() => handleDelete(item.id)}>Delete</Button>
@@ -132,22 +138,23 @@ const App = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <Form onSubmit={handleSubmit}>
-                        <Form.Group controlId="formName">
-                            <Form.Label>Name</Form.Label>
+                        <Form.Group controlId="formTitle">
+                            <Form.Label>Title</Form.Label>
                             <Form.Control
                                 type="text"
-                                name="name"
-                                value={currentItem.name}
+                                name="title"
+                                value={currentItem.title}
                                 onChange={handleInputChange}
                                 required
                             />
                         </Form.Group>
-                        <Form.Group controlId="formDescription" className="mt-3">
-                            <Form.Label>Description</Form.Label>
+                        <Form.Group controlId="formBody" className="mt-3">
+                            <Form.Label>Body</Form.Label>
                             <Form.Control
-                                type="text"
-                                name="description"
-                                value={currentItem.description}
+                                as="textarea"
+                                rows={3}
+                                name="body"
+                                value={currentItem.body}
                                 onChange={handleInputChange}
                                 required
                             />
