@@ -49,13 +49,13 @@ const NavBar = () => {
                                 <Link to="useContextDemo" style={styles.navLink}>useContext</Link>
                             </li>
                             <li style={styles.subMenuItem} onClick={handleSubMenuItemClick}>
-                                <Link to="#" style={styles.navLink}>useRef</Link>
+                                <Link to="useRef" style={styles.navLink}>useRef</Link>
                             </li>
                             <li style={styles.subMenuItem} onClick={handleSubMenuItemClick}>
-                                <Link to="#" style={styles.navLink}>useReducer</Link>
+                                <Link to="useReducer" style={styles.navLink}>useReducer</Link>
                             </li>
                             <li style={styles.subMenuItem} onClick={handleSubMenuItemClick}>
-                                <Link to="#" style={styles.navLink} onClick={handleSubMenuItemClick}>useCallback</Link>
+                                <Link to="useCallback" style={styles.navLink} onClick={handleSubMenuItemClick}>useCallback</Link>
                             </li>
                             <li style={styles.subMenuItem} onClick={handleSubMenuItemClick}>
                                 <Link to="UseMemoDemo" style={styles.navLink}>useMemo</Link>
@@ -95,6 +95,15 @@ const NavBar = () => {
                     <Link to="/productList" style={styles.navLink}>Flip Card</Link>
                 </li>
                 <li style={styles.navItem}>
+                    <Link to="/meterialDemo" style={styles.navLink}>Material</Link>
+                </li>
+                <li style={styles.navItem}>
+                    <Link to="/fetch" style={styles.navLink}>Fetch Demo</Link>
+                </li>
+                <li style={styles.navItem}>
+                    <Link to="/todo" style={styles.navLink}>Todo list</Link>
+                </li>
+                <li style={styles.navItem}>
                     <Link to="/login" style={styles.navLink} >logout</Link>
                 </li>
             </ul>
@@ -105,7 +114,14 @@ const NavBar = () => {
 const styles = {
     navbar: {
         backgroundColor: '#333',
+        color: '#fff',
         padding: '10px',
+        textAlign: 'center',
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        zIndex: 1000,/* Ensure navbar stays on top */
     },
     navList: {
         listStyleType: 'none',

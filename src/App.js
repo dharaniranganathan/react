@@ -1,19 +1,25 @@
 import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Routes, Navigate,useNavigate } from 'react-router-dom';
 import Layout from './routing/layout';
 import PublicLayout from './routing/publicLayout';
 import Login from './routing/login';
 import Index from './routing';
 import NestedAxios from './routing/nestedAxios';
+import FetchDemo from './routing/fetchDemo';
 import ClassDemo from './components/classDemo';
 import FunctionDemo from './components/functionDemo';
 import ConditionalDemo from './components/conditionalDemo';
 import LifeCycleDemo from './components/lifeCycleDemo';
 import UseContextDemo from './components/useContextDemo';
 import UseEffectDemo from './components/useEffectDemo';
+import UseRef from './components/useRefDemo';
+import UseCallback from './components/useCallbackDemo';
+import UseReducer from './components/useReducerDemo';
 import UseMemoDemo from './components/useMemoDemo';
-import UseCallback from './components/useCallback';
 import Counter from './components/counterDemo';
+import MeterialDemo from './components/meterialDemo';
+import TodoList from './components/todolist.js';
 import ProductList from './components/product/ProductList';
 import Curd from './routing/crud.js';
 // import './App.css';
@@ -55,12 +61,18 @@ const App = () => {
                         <Route path="/useContextDemo" element={<UseContextDemo />} />
                         <Route path="/lifeCycleDemo" element={<LifeCycleDemo />} />
                         <Route path="/useEffectDemo" element={<UseEffectDemo />} />
+                        <Route path="/useCallback" element={<UseCallback />} />
+                        <Route path="/useReducer" element={<UseReducer />} />
+                        <Route path="/useRef" element={<UseRef />} />
                         <Route path="/useMemoDemo" element={<UseMemoDemo />} />
                         <Route path="/useCallback" element={<UseCallback />} />
                         <Route path="/functionDemo" element={<FunctionDemo />} />
                         <Route path="/curd" element={<Curd />} />
                         <Route path="/productList" element={<ProductList />} />
                         <Route path="/counter" element={<Counter />} />
+                        <Route path="/meterialDemo" element={<MeterialDemo />} />
+                        <Route path="/fetch" element={<FetchDemo />} />
+                        <Route path="/todo" element={<TodoList />} />
                         <Route path="/" element={<Navigate to="/" />} />
                         <Route path="*" element={<Navigate to="/login" replace />} />
                     </Route>

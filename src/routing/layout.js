@@ -22,7 +22,7 @@ const styles = {
         padding: '20px',
     },
     content: {
-        // marginTop: '20px',
+         marginTop: '50px',
     },
 };
 
